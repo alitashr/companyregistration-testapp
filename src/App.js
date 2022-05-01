@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import CompanyRegistration from './components/CompanyRegistration';
+import LoginForm from './components/LoginForm';
+import { useUserDetailsState } from './reducers/userDetails.reducer';
 
 function App() {
+  const userDetailsState = useUserDetailsState();
+  const { isLoggedIn } = userDetailsState;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        isLoggedIn ? <CompanyRegistration/>: <LoginForm/>
+      }
+      
     </div>
   );
 }
