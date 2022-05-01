@@ -6,19 +6,19 @@ import { useDispatchUserDetails, userDetailsActions } from "../../reducers/userD
 const LoginForm = () => {
   const dispatchUserDetailsState = useDispatchUserDetails();
 
-  const [email, setEmail] = React.useState("team@pegotec.net");
-  const [password, setPassword] = React.useState("12345678");
-
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   const formOnSubmit = (event) => {
     event.preventDefault();
-    console.log("formOnSubmit -> email, password", email, password)
-
     login({ email, password })
       .then((res) => {
         dispatchUserDetailsState({ type: userDetailsActions.SET_ISLOGGEDIN, payload: true });
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log("formOnSubmit -> err", err);
+        alert("Invalid email or password");
+      });
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -29,6 +29,8 @@ const LoginForm = () => {
   return (
     <div>
       <Container>
+        <h1 className="page-title">Login Form</h1>
+
         <Row>
           <Col sm={8}>
             <Form onSubmit={formOnSubmit}>
@@ -64,7 +66,5 @@ const LoginForm = () => {
     </div>
   );
 };
-
-LoginForm.propTypes = {};
 
 export default LoginForm;

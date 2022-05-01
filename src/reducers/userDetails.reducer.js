@@ -3,18 +3,37 @@ const StateContext = React.createContext();
 const DispatchContext = React.createContext();
 
 const SET_ISLOGGEDIN = "SET_ISLOGGEDIN";
+const SET_USERDETAILS = "SET_USERDETAILS";
+const SET_COUNTRY = "SET_COUNTRY";
+
 const userDetailsActions = {
   SET_ISLOGGEDIN,
+  SET_USERDETAILS,
+  SET_COUNTRY
 };
 const initialUserDetailsState = {
   isLoggedIn: false,
-  
+  company: "",
+  email: "",
+  address: "",
+  phone: null,
+  country: "",
+  age: null,
+  about: "",
 };
 const userDetailsReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_ISLOGGEDIN:
-      return {...state, isLoggedIn: payload};
+      return { ...state, isLoggedIn: payload };
+    case SET_USERDETAILS:
+      return {
+        ...state, ...payload
+      }
+    case SET_COUNTRY:
+      return{
+        ...state, country: payload
+      }
     default:
       return state;
   }

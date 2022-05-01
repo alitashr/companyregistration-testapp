@@ -5,6 +5,7 @@ import { useUserDetailsState } from './reducers/userDetails.reducer';
 function App() {
   const userDetailsState = useUserDetailsState();
   const { isLoggedIn } = userDetailsState;
+  console.log("App -> isLoggedIn", isLoggedIn)
   return (
     <div className="App">
       {

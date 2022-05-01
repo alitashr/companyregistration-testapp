@@ -8,11 +8,9 @@ import { UserDetailsStateProvider } from "./reducers/userDetails.reducer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <UserDetailsStateProvider>
-      <App />
-    </UserDetailsStateProvider>
-  </React.StrictMode>
+  <UserDetailsStateProvider>
+    <App />
+  </UserDetailsStateProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
