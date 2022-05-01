@@ -1,7 +1,7 @@
 import HttpClient from "./httpClient";
 const domain = "https://api.framework.pegotec.dev/api/auth/login";
 
-const postHttpClient = (data, config, sendErrorReport = true) => {
+const postHttpClient = (data, config) => {
   return new Promise((resolve, reject) => {
     HttpClient.post(`${domain}`, data, config)
       .then((response) => resolve(response.data))
@@ -20,7 +20,6 @@ export const login = ({ email, password }) => {
   return new Promise((resolve, reject) => {
     postHttpClient(data)
       .then((res) => {
-        console.log("postHttpClient -> res", res);
         resolve(res);
       })
       .catch((err) => reject(err));
